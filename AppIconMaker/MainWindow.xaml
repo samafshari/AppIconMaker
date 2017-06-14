@@ -5,8 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppIconMaker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        ResizeMode="NoResize"
+        Title="Neat Icon Maker" Height="311" Width="760">
+    <Grid Drop="img_Drop" AllowDrop="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Content="Drop Image Here" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0.5" />
+        <Image x:Name="img" Margin="10,10,10,10" Grid.Column="0" />
+        <Rectangle Fill="#00F4F4F5" Margin="11,11,11,11" Stroke="Black" Width="256" Grid.Column="0" />
         
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <StackPanel.Resources>
+                <ResourceDictionary>
+                    <Style TargetType="Label">
+                        <Setter Property="FontWeight" Value="Bold" />
+                    </Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Padding" Value="5,0,0,0" />
+                        <Setter Property="Height" Value="24" />
+                        <Setter Property="Margin" Value="0,0,5,0" />
+                    </Style>
+                    <Style TargetType="RadioButton">
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                </ResourceDictionary>
+            </StackPanel.Resources>
+            <Label Content="Input File:" />
+            <Grid Margin="0,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="32" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" x:Name="txtInput" />
+                <Button Grid.Column="1" Content="..."
+                        x:Name="btnBrowseInput" Click="btnBrowseInput_Click" />
+            </Grid>
+            <Label Content="Output Path:" />
+            <Grid Margin="0,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="32" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" x:Name="txtOutput" />
+                <Button Grid.Column="1" Content="..."
+                        x:Name="btnBrowseOutput" Click="btnBrowseOutput_Click" />
+            </Grid>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Platform:" />
+                <Separator Visibility="Hidden" Width="10" />
+                <RadioButton Content="iOS" x:Name="rdoIos" IsChecked="True" />
+                <Separator Visibility="Hidden" Width="10" />
+                <RadioButton Content="Android" x:Name="rdoDroid" />
+            </StackPanel>
+        </StackPanel>
+        <Button Padding="20,10,20,10" Margin="10,10,10,10"
+                VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                Grid.Column="1" Content="Convert..." x:Name="btnConvert"
+                Click="btnConvert_Click" />
     </Grid>
 </Window>
