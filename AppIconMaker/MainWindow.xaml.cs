@@ -99,6 +99,7 @@ namespace AppIconMaker
             File.Copy("Contents.json", Path.Combine(outdir, "Contents.json"));
             var sizes = new Size[]
             {
+                new Size("icon_rect_1024.png", "1024x1024"),
                 new Size("Icon-App-20x20@1x.png", "20x20"),
                 new Size("Icon-App-20x20@2x.png", "40x40"),
                 new Size("Icon-App-20x20@3x.png", "60x60"),
