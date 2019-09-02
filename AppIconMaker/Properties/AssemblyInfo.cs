@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Neat Icon Maker")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Icon Maker")]
+[assembly: AssemblyDescription("Icon Maker for RedCorners.Forms and Xamarin")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("NeatCapital OÜ and Saeed Afshari")]
 [assembly: AssemblyProduct("AppIconMaker")]
-[assembly: AssemblyCopyright("Copyright © 2017 Saeed Afshari")]
+[assembly: AssemblyCopyright("Copyright © 2019 NeatCapital OÜ")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
