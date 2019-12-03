@@ -156,7 +156,7 @@
     },
     {
       "role": "quickLook",
-      "filename": "icon172.png",
+      "filename": "icon-172.png",
       "size": "86x86",
       "subtype": "38mm",
       "scale": "2x",
@@ -164,7 +164,7 @@
     },
     {
       "role": "quickLook",
-      "filename": "icon196.png",
+      "filename": "icon-196.png",
       "size": "98x98",
       "subtype": "42mm",
       "scale": "2x",
@@ -172,14 +172,14 @@
     },
     {
       "role": "quickLook",
-      "filename": "icon2161.png",
+      "filename": "icon-216.png",
       "size": "108x108",
       "subtype": "44mm",
       "scale": "2x",
       "idiom": "watch"
     },
     {
-      "filename": "icon10241.png",
+      "filename": "icon-1024.png",
       "size": "1024x1024",
       "scale": "1x",
       "idiom": "watch-marketing"

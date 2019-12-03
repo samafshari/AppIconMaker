@@ -108,10 +108,10 @@ namespace AppIconMaker
                 new Size("Icon-29@3x.png", "87x87"),
                 new Size("Icon-40@2x.png", "80x80"),
                 new Size("Icon-44@2x.png", "88x88"),
-                new Size("icon172.png", "172x172"),
-                new Size("icon196.png", "196x196"),
-                new Size("icon2161.png", "216x216"),
-                new Size("icon10241.png", "1024x1024"),
+                new Size("icon-172.png", "172x172"),
+                new Size("icon-196.png", "196x196"),
+                new Size("icon-216.png", "216x216"),
+                new Size("icon-1024.png", "1024x1024"),
                 new Size("Icon-Small-50x50@2x.png", "100x100")
             };
 
