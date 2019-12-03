@@ -49,11 +49,14 @@ namespace AppIconMaker
             }
 
             var fi = new FileInfo(infile);
-            var suffix = rdoIos.IsChecked.GetValueOrDefault() ? "ios" : "droid";
+            var suffix = rdoIos.IsChecked.GetValueOrDefault() ? "ios" :
+                rdoWatch.IsChecked.GetValueOrDefault() ? "iwatch" : "droid";
             outdir = Path.Combine(outdir, $"{fi.Name}_{suffix}");
             Directory.CreateDirectory(outdir);
             if (rdoIos.IsChecked.GetValueOrDefault())
                 DoiOS(infile, outdir);
+            else if (rdoWatch.IsChecked.GetValueOrDefault())
+                DoiWatch(infile, outdir);
             else
                 DoDroid(infile, outdir);
 
@@ -91,6 +94,31 @@ namespace AppIconMaker
             {
                 Name = name;
                 Dimensions = dimensions;
+            }
+        }
+
+        void DoiWatch(string infile, string outdir)
+        {
+            File.Copy("ContentsWatch.json", Path.Combine(outdir, "Contents.json"));
+            var sizes = new Size[]
+            {
+                new Size("Icon-24@2x.png", "48x48"),
+                new Size("Icon-27.5@2x.png", "55x55"),
+                new Size("Icon-29@2x.png", "58x58"),
+                new Size("Icon-29@3x.png", "87x87"),
+                new Size("Icon-40@2x.png", "80x80"),
+                new Size("Icon-44@2x.png", "88x88"),
+                new Size("icon172.png", "172x172"),
+                new Size("icon196.png", "196x196"),
+                new Size("icon2161.png", "216x216"),
+                new Size("icon10241.png", "1024x1024"),
+                new Size("Icon-Small-50x50@2x.png", "100x100")
+            };
+
+            foreach (var item in sizes)
+            {
+                (int width, int height) = ExtractSizes(item.Dimensions);
+                Convert(infile, Path.Combine(outdir, item.Name), width, height);
             }
         }
 
