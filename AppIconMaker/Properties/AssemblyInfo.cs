@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("Icon Maker")]
 [assembly: AssemblyDescription("Icon Maker for RedCorners.Forms and Xamarin")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("NeatCapital OÜ and Saeed Afshari")]
+[assembly: AssemblyCompany("NeatCapital OÜ")]
 [assembly: AssemblyProduct("AppIconMaker")]
-[assembly: AssemblyCopyright("Copyright © 2019 NeatCapital OÜ")]
+[assembly: AssemblyCopyright("Copyright © 2019-2020 NeatCapital OÜ")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
