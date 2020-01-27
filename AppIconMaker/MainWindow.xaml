@@ -53,15 +53,22 @@
                 <Button Grid.Column="1" Content="..."
                         x:Name="btnBrowseOutput" Click="btnBrowseOutput_Click" />
             </Grid>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Platform:" />
-                <RadioButton Content="Apple Watch" x:Name="rdoWatch" IsChecked="False" />
-                <Separator Visibility="Hidden" Width="10" />
-                <RadioButton Content="iOS" x:Name="rdoIos" IsChecked="True" />
-                <Separator Visibility="Hidden" Width="10" />
-                <RadioButton Content="Android" x:Name="rdoDroid" />
-            </StackPanel>
-            <TextBlock FontSize="11" Text="Drag and drop a high resolution icon (e.g. 1024x1024 pixels) on the left side. Use opaque icons without rounded corners for the iOS, and transparent icons for traditional Androids. The output is a folder containing the aprropriate files and directory structure for each of the platforms. Simply copy and paste the contents of the output directory to the resources folder of each target platform." TextWrapping="WrapWithOverflow" FontWeight="Regular" Foreground="#AAA" Margin="0,0,10,0" />
+            <Grid Margin="0,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Platform:" />
+                    <RadioButton Content="Apple Watch" x:Name="rdoWatch" IsChecked="False" />
+                    <Separator Visibility="Hidden" Width="10" />
+                    <RadioButton Content="iOS" x:Name="rdoIos" IsChecked="True" />
+                    <Separator Visibility="Hidden" Width="10" />
+                    <RadioButton Content="Android" x:Name="rdoDroid" />
+                </StackPanel>
+                <CheckBox Grid.Column="1" Content="Overwrite" x:Name="chkOverwrite" IsChecked="True" VerticalAlignment="Center" />
+            </Grid>
+            <TextBlock FontSize="11" Text="Drag and drop a high resolution icon (e.g. 1024x1024 pixels) on the left side. Use opaque icons without rounded corners for the iOS, and transparent icons for traditional Androids. Remember to separate Android adaptive icons from traditional icons. The output is a folder containing the aprropriate files and directory structure for each of the platforms. Simply copy and paste the contents of the output directory to the resources folder of each target platform." TextWrapping="WrapWithOverflow" FontWeight="Regular" Foreground="#AAA" Margin="0,0,10,0" />
         </StackPanel>
         <Grid Grid.Column="1" VerticalAlignment="Bottom" >
             <Label Content="Visit redcorners.com for more information." VerticalAlignment="Center" />
