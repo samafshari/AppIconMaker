@@ -55,6 +55,7 @@
             </Grid>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Platform:" />
+                <RadioButton Content="Apple Watch" x:Name="rdoWatch" IsChecked="False" />
                 <Separator Visibility="Hidden" Width="10" />
                 <RadioButton Content="iOS" x:Name="rdoIos" IsChecked="True" />
                 <Separator Visibility="Hidden" Width="10" />
