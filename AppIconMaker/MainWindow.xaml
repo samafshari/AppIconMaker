@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AppIconMaker"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Neat Icon Maker" Height="311" Width="760">
+        Title="Icon Maker for RedCorners.Forms / Xamarin" Height="311" Width="760" WindowStartupLocation="CenterScreen" Icon="icon.ico">
     <Grid Drop="img_Drop" AllowDrop="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -53,18 +53,30 @@
                 <Button Grid.Column="1" Content="..."
                         x:Name="btnBrowseOutput" Click="btnBrowseOutput_Click" />
             </Grid>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Platform:" />
-                <RadioButton Content="Apple Watch" x:Name="rdoWatch" IsChecked="False" />
-                <Separator Visibility="Hidden" Width="10" />
-                <RadioButton Content="iOS" x:Name="rdoIos" IsChecked="True" />
-                <Separator Visibility="Hidden" Width="10" />
-                <RadioButton Content="Android" x:Name="rdoDroid" />
-            </StackPanel>
+            <Grid Margin="0,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Platform:" />
+                    <RadioButton Content="Apple Watch" x:Name="rdoWatch" IsChecked="False" />
+                    <Separator Visibility="Hidden" Width="10" />
+                    <RadioButton Content="iOS" x:Name="rdoIos" IsChecked="True" />
+                    <Separator Visibility="Hidden" Width="10" />
+                    <RadioButton Content="Android" x:Name="rdoDroid" />
+                </StackPanel>
+                <CheckBox Grid.Column="1" Content="Overwrite" x:Name="chkOverwrite" IsChecked="True" VerticalAlignment="Center" />
+            </Grid>
+            <TextBlock FontSize="11" Text="Drag and drop a high resolution icon (e.g. 1024x1024 pixels) on the left side. Use opaque icons without rounded corners for the iOS, and transparent icons for traditional Androids. Remember to separate Android adaptive icons from traditional icons. The output is a folder containing the aprropriate files and directory structure for each of the platforms. Simply copy and paste the contents of the output directory to the resources folder of each target platform." TextWrapping="WrapWithOverflow" FontWeight="Regular" Foreground="#AAA" Margin="0,0,10,0" />
         </StackPanel>
-        <Button Padding="20,10,20,10" Margin="10,10,10,10"
-                VerticalAlignment="Bottom" HorizontalAlignment="Right"
-                Grid.Column="1" Content="Convert..." x:Name="btnConvert"
+        <Grid Grid.Column="1" VerticalAlignment="Bottom" >
+            <Label Content="Visit redcorners.com for more information." VerticalAlignment="Center" />
+            <Button Padding="20,10,20,10" Margin="10,10,10,10"
+                HorizontalAlignment="Right" VerticalAlignment="Center"
+                Content="Convert..." x:Name="btnConvert"
                 Click="btnConvert_Click" />
+        </Grid>
+        
     </Grid>
 </Window>

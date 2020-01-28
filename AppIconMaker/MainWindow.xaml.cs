@@ -31,6 +31,8 @@ namespace AppIconMaker
             InitializeComponent();
         }
 
+        bool OverWrite => chkOverwrite.IsChecked.GetValueOrDefault();
+
         private void btnConvert_Click(object sender, RoutedEventArgs e)
         {
             var infile = txtInput.Text;
@@ -99,7 +101,7 @@ namespace AppIconMaker
 
         void DoiWatch(string infile, string outdir)
         {
-            File.Copy("ContentsWatch.json", Path.Combine(outdir, "Contents.json"));
+            File.Copy("ContentsWatch.json", Path.Combine(outdir, "Contents.json"), OverWrite);
             var sizes = new Size[]
             {
                 new Size("Icon-24@2x.png", "48x48"),
@@ -124,7 +126,7 @@ namespace AppIconMaker
 
         void DoiOS(string infile, string outdir)
         {
-            File.Copy("Contents.json", Path.Combine(outdir, "Contents.json"));
+            File.Copy("Contents.json", Path.Combine(outdir, "Contents.json"), OverWrite);
             var sizes = new Size[]
             {
                 new Size("icon_rect_1024.png", "1024x1024"),
@@ -174,6 +176,8 @@ namespace AppIconMaker
 
         void Convert(string infile, string outfile, int width, int height, bool alpha)
         {
+            if (File.Exists(outfile) && OverWrite)
+                File.Delete(outfile);
             var sourceBmp = Bitmap.FromFile(infile);
             ResizeImage(sourceBmp, width, height, alpha).Save(outfile);
         }
