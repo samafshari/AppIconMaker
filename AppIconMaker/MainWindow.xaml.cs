@@ -18,6 +18,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using Path = System.IO.Path;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace AppIconMaker
 {
@@ -65,6 +66,26 @@ namespace AppIconMaker
             MessageBox.Show("Operation Done.");
         }
 
+        public string ReadEmbeddedResource(string resource)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = $"AppIconMaker.{resource}";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                string result = reader.ReadToEnd();
+                return result;
+            }
+        }
+
+        public void CopyEmbeddedResource(string from, string to, bool overwrite)
+        {
+            if (!overwrite && File.Exists(to)) return;
+            File.Delete(to);
+            File.WriteAllText(to, ReadEmbeddedResource(from));
+        }
+
         private void btnBrowseInput_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new System.Windows.Forms.OpenFileDialog();
@@ -101,7 +122,8 @@ namespace AppIconMaker
 
         void DoiWatch(string infile, string outdir)
         {
-            File.Copy("ContentsWatch.json", Path.Combine(outdir, "Contents.json"), OverWrite);
+            CopyEmbeddedResource("ContentsWatch.json", Path.Combine(outdir, "Contents.json"), OverWrite);
+
             var sizes = new Size[]
             {
                 new Size("Icon-24@2x.png", "48x48"),
@@ -126,7 +148,8 @@ namespace AppIconMaker
 
         void DoiOS(string infile, string outdir)
         {
-            File.Copy("Contents.json", Path.Combine(outdir, "Contents.json"), OverWrite);
+            CopyEmbeddedResource("Contents.json", Path.Combine(outdir, "Contents.json"), OverWrite);
+
             var sizes = new Size[]
             {
                 new Size("icon_rect_1024.png", "1024x1024"),
