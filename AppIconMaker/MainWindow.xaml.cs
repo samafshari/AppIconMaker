@@ -142,7 +142,7 @@ namespace AppIconMaker
             foreach (var item in sizes)
             {
                 (int width, int height) = ExtractSizes(item.Dimensions);
-                Convert(infile, Path.Combine(outdir, item.Name), width, height);
+                Convert(infile, Path.Combine(outdir, item.Name), width, height, false);
             }
         }
 
@@ -182,7 +182,7 @@ namespace AppIconMaker
             foreach (var item in sizes)
             {
                 (int width, int height) = ExtractSizes(item.Dimensions);
-                Convert(infile, Path.Combine(outdir, item.Name), width, height);
+                Convert(infile, Path.Combine(outdir, item.Name), width, height, false);
             }
         }
 
@@ -192,23 +192,24 @@ namespace AppIconMaker
             Directory.CreateDirectory(Path.Combine(outdir, "drawable-xhdpi"));
             Directory.CreateDirectory(Path.Combine(outdir, "drawable-xxhdpi"));
 
-            Convert(infile, Path.Combine(outdir, "drawable-hdpi", "icon.png"), 72, 72);
-            Convert(infile, Path.Combine(outdir, "drawable-xhdpi", "icon.png"), 96, 96);
-            Convert(infile, Path.Combine(outdir, "drawable-xxhdpi", "icon.png"), 144, 144);
+            Convert(infile, Path.Combine(outdir, "drawable-hdpi", "icon.png"), 72, 72, true);
+            Convert(infile, Path.Combine(outdir, "drawable-xhdpi", "icon.png"), 96, 96, true);
+            Convert(infile, Path.Combine(outdir, "drawable-xxhdpi", "icon.png"), 144, 144, true);
         }
 
-        void Convert(string infile, string outfile, int width, int height)
+        void Convert(string infile, string outfile, int width, int height, bool alpha)
         {
             if (File.Exists(outfile) && OverWrite)
                 File.Delete(outfile);
             var sourceBmp = Bitmap.FromFile(infile);
-            ResizeImage(sourceBmp, width, height).Save(outfile);
+            ResizeImage(sourceBmp, width, height, alpha).Save(outfile);
         }
 
-        static Bitmap ResizeImage(System.Drawing.Image image, int width, int height)
+        static Bitmap ResizeImage(System.Drawing.Image image, int width, int height, bool alpha)
         {
             var destRect = new System.Drawing.Rectangle(0, 0, width, height);
-            var destImage = new Bitmap(width, height);
+            var pixelFormat = alpha ? System.Drawing.Imaging.PixelFormat.Format32bppArgb : System.Drawing.Imaging.PixelFormat.Format24bppRgb;
+            var destImage = new Bitmap(width, height, pixelFormat);
 
             destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
